@@ -14,7 +14,7 @@ class CategorieController extends Controller
     {
         $categories=Categorie::all();
        
-        return view('categorie',compact('categories'));
+        return view('categorie.index',compact('categories'));
     }
 
     /**
@@ -22,7 +22,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-return view('form');
+return view('categorie.form');
     }
 
     /**
@@ -30,6 +30,14 @@ return view('form');
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+
+        'nom'=>'required',
+        'description'=>'required'
+
+
+        ]);
     $categorie=new Categorie();
     $categorie->nom=$request->nom;
     $categorie->description=$request->description;
@@ -41,9 +49,10 @@ return view('form');
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Categorie $categorie)
     {
-        // metre metre ml id comme argumant 
+        // $categorie=Categorie::find($categorie->id);
+        return view('categorie.detail',compact('categorie'));
     }
 
     /**
