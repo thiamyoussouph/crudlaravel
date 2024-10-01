@@ -60,15 +60,20 @@ return view('categorie.form');
      */
     public function edit(Categorie $categorie)
     {
-        //
+        return view('categorie.edite',compact('categorie'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Categorie $categorie)
+
     {
-        //
+        
+    $categorie->nom=$request->nom;
+    $categorie->description=$request->description;
+    $categorie->save();
+    return redirect()->route('categorie.index');
     }
 
     /**
@@ -76,7 +81,8 @@ return view('categorie.form');
      */
     public function destroy(Categorie $categorie)
     {
-        //
+        $categorie->delete();
+        return redirect()->route('categorie.index');
     }
 
 }
