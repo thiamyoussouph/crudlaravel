@@ -1,5 +1,6 @@
 @extends('layout.app')
 @section('content')
+<a href="{{route('produits.create')}}" class="btn btn-success">ajouter produit</a>
 <div class="card m-5" style="width: 50rem;">
     <h5 class="card-title text-center">
         liste des categories
