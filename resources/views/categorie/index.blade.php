@@ -4,6 +4,11 @@
 hello depuis lanvue categorie
 <a href="{{route('categorie.create')}}" class="btn btn-success">ajouter</a>
 
+@if (session()->has('message'))
+<div class="alert alert-success">
+    {{session()->get('message')}}
+</div>
+@endif
 <div class="card m-5" style="width: 50rem;">
     <h5 class="card-title text-center">
         liste des categories

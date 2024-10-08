@@ -16,7 +16,7 @@ Route::get('hello',function(){
 });
 
 //route pour categorie
-Route::get('/listcategorie',[CategorieController::class,'index'])->name('categorie.index');
+Route::get('/',[CategorieController::class,'index'])->name('categorie.index');
 Route::get('/formulaire',[CategorieController::class,'create'])->name('categorie.create');
 Route::post('/ajouter',[CategorieController::class,'store'])->name('categorie.store');
 Route::get('/detail/{categorie}',[CategorieController::class,'show'])->name('categorie.show');

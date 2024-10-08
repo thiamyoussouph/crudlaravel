@@ -33,9 +33,15 @@ return view('categorie.form');
 
         $request->validate([
 
-        'nom'=>'required',
+        'nom'=>'required|unique:categories|min:2',
         'description'=>'required'
 
+
+        ],[
+            'nom.required'=>'le nom est obligatoire',
+            'nom.unique'=>'le nom doit être unique',
+            'nom.min'=>'le nom doit avoir au moins 2 caractères',
+            'description.required'=>'la description est obligatoire'
 
         ]);
     $categorie=new Categorie();
@@ -43,7 +49,7 @@ return view('categorie.form');
     $categorie->description=$request->description;
     $categorie->save();
    
-    return redirect()->route('categorie.index');
+    return redirect()->route('categorie.index')->with('message','la catégorie a été ajoutée avec succès');
     }
 
     /**
